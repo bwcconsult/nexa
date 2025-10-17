@@ -8,29 +8,35 @@ const logFormat = winston.format.combine(
   winston.format.json()
 );
 
-const logger = winston.createLogger({
-  level: process.env.LOG_LEVEL || 'info',
-  format: logFormat,
-  defaultMeta: { service: 'nexa-crm-api' },
-  transports: [
+// Create transports array - always include console in production for Railway/Docker
+const transports = [
+  new winston.transports.Console({
+    format: winston.format.combine(
+      winston.format.colorize(),
+      winston.format.simple()
+    )
+  })
+];
+
+// Only add file transports in development (not needed in Railway/Docker)
+if (process.env.NODE_ENV !== 'production') {
+  transports.push(
     new winston.transports.File({ 
       filename: path.join(__dirname, '../logs/error.log'), 
       level: 'error' 
     }),
     new winston.transports.File({ 
       filename: path.join(__dirname, '../logs/combined.log') 
-    }),
-  ],
-});
-
-if (process.env.NODE_ENV !== 'production') {
-  logger.add(new winston.transports.Console({
-    format: winston.format.combine(
-      winston.format.colorize(),
-      winston.format.simple()
-    )
-  }));
+    })
+  );
 }
+
+const logger = winston.createLogger({
+  level: process.env.LOG_LEVEL || 'info',
+  format: logFormat,
+  defaultMeta: { service: 'nexa-crm-api' },
+  transports: transports,
+});
 
 // Create a stream object for Morgan
 logger.stream = {
