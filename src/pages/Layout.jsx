@@ -43,7 +43,6 @@ import {
   Map,
   CheckCircle,
   Calendar as CalendarIcon,
-  Package,
   Workflow as WorkflowIcon,
   Code,
   Globe,
