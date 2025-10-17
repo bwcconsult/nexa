@@ -192,29 +192,44 @@ See `backend/railway.toml` for configuration.
 
 ## 📁 Project Structure
 
+This is a **monorepo** with frontend and backend in one repository:
+
 ```
 nexa-crm/
-├── backend/                 # Node.js backend
-│   ├── config/             # Configuration files
-│   ├── controllers/        # Route controllers
-│   ├── models/             # Database models
-│   ├── routes/             # API routes
-│   ├── middleware/         # Custom middleware
-│   ├── services/           # Business logic
-│   ├── server.js           # Entry point
-│   └── package.json
-├── src/                    # React frontend
-│   ├── components/         # React components
-│   ├── pages/              # Page components
-│   ├── api/                # API client
-│   ├── hooks/              # Custom hooks
-│   ├── lib/                # Utilities
-│   └── utils/              # Helper functions
-├── public/                 # Static assets
-├── netlify.toml           # Netlify config
-├── package.json           # Frontend dependencies
-└── README.md
+│
+├── 🚂 BACKEND (Node.js + Express API)
+│   └── backend/                    # Backend root directory
+│       ├── config/                 # Database & app configuration
+│       ├── controllers/            # API business logic (24 controllers)
+│       ├── models/                 # Database models (20 entities)
+│       ├── routes/                 # API endpoints (/api/v1/...)
+│       ├── middleware/             # Auth, validation, error handling
+│       ├── services/               # AWS S3, SES, Redis services
+│       ├── server.js               # Main server entry point
+│       └── package.json            # Backend dependencies
+│
+├── ⚛️ FRONTEND (React + Vite)
+│   ├── src/                        # Frontend source code
+│   │   ├── components/             # React UI components (98 components)
+│   │   ├── pages/                  # Page components (23 pages)
+│   │   ├── api/                    # API client for backend calls
+│   │   ├── hooks/                  # Custom React hooks
+│   │   ├── lib/                    # Utility libraries
+│   │   └── utils/                  # Helper functions
+│   ├── public/                     # Static assets (images, icons)
+│   ├── index.html                  # HTML entry point
+│   ├── vite.config.js              # Vite build configuration
+│   ├── tailwind.config.js          # TailwindCSS configuration
+│   └── package.json                # Frontend dependencies
+│
+└── 📄 Configuration & Docs
+    ├── .gitignore                  # Git ignore rules
+    ├── netlify.toml                # Netlify deployment config
+    ├── README.md                   # This file
+    └── *.md                        # Documentation files
 ```
+
+**Note**: `src/` is the **FRONTEND** (standard naming for React projects)
 
 ---
 
