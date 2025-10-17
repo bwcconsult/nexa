@@ -48,7 +48,10 @@ import {
   Globe,
   Layout as LayoutIcon,
   Tablet,
-  Factory
+  Factory,
+  List as ListIcon,
+  Upload,
+  Inbox as InboxIcon
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -80,6 +83,9 @@ const mainNavItems = [
 ];
 
 const moreNavItems = [
+    { title: "Inbox", url: createPageUrl("Inbox"), icon: InboxIcon, badge: "NEW" },
+    { title: "Contact Lists", url: createPageUrl("ContactLists"), icon: ListIcon, badge: "NEW" },
+    { title: "Import/Export", url: createPageUrl("ImportExport"), icon: Upload, badge: "NEW" },
     { title: "Link Analytics", url: createPageUrl("LinkAnalytics"), icon: ExternalLink, badge: "Creator" },
     { title: "Inventory", url: createPageUrl("Inventory"), icon: Warehouse },
     { title: "Finance", url: createPageUrl("Finance"), icon: Receipt },

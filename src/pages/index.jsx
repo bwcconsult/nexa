@@ -88,6 +88,12 @@ import KioskModes from "./KioskModes";
 
 import IndustryTemplates from "./IndustryTemplates";
 
+import ContactLists from "./ContactLists";
+
+import ImportExport from "./ImportExport";
+
+import Inbox from "./Inbox";
+
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 
 const PAGES = {
@@ -179,6 +185,12 @@ const PAGES = {
     KioskModes: KioskModes,
     
     IndustryTemplates: IndustryTemplates,
+    
+    ContactLists: ContactLists,
+    
+    ImportExport: ImportExport,
+    
+    Inbox: Inbox,
     
 }
 
@@ -294,6 +306,12 @@ function PagesContent() {
                 <Route path="/KioskModes" element={<KioskModes />} />
                 
                 <Route path="/IndustryTemplates" element={<IndustryTemplates />} />
+                
+                <Route path="/ContactLists" element={<ContactLists />} />
+                
+                <Route path="/ImportExport" element={<ImportExport />} />
+                
+                <Route path="/Inbox" element={<Inbox />} />
                 
             </Routes>
         </Layout>
