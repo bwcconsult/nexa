@@ -35,7 +35,12 @@ import {
   Lightbulb,
   MapPin,
   Share2,
-  Briefcase
+  Briefcase,
+  Zap as ZapIcon,
+  Mail as MailIcon,
+  Shield,
+  Webhook,
+  Map
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -78,6 +83,12 @@ const moreNavItems = [
     { title: "Social", url: createPageUrl("Social"), icon: Share2, badge: "NEW" },
     { title: "Projects", url: createPageUrl("Projects"), icon: Briefcase, badge: "NEW" },
     { title: "Services", url: createPageUrl("Services"), icon: Settings, badge: "NEW" },
+    { title: "Workflows", url: createPageUrl("Workflows"), icon: ZapIcon, badge: "NEW" },
+    { title: "Mass Email", url: createPageUrl("MassEmail"), icon: MailIcon, badge: "NEW" },
+    { title: "Assignment Rules", url: createPageUrl("AssignmentRules"), icon: Users, badge: "NEW" },
+    { title: "Validation Rules", url: createPageUrl("ValidationRules"), icon: Shield, badge: "NEW" },
+    { title: "Webhooks", url: createPageUrl("WebhookConfigs"), icon: Webhook, badge: "NEW" },
+    { title: "Territories", url: createPageUrl("Territories"), icon: Map, badge: "NEW" },
     { title: "AI Assistant", url: createPageUrl("AIAssistant"), icon: Bot, badge: "AI" },
     { title: "Integrations", url: createPageUrl("Integrations"), icon: Zap },
     { title: "Settings", url: createPageUrl("Settings"), icon: Settings },

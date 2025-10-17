@@ -44,6 +44,11 @@ const visitRoutes = require('./routes/visits');
 const socialPostRoutes = require('./routes/socialPosts');
 const projectRoutes = require('./routes/projects');
 const serviceRoutes = require('./routes/services');
+const massEmailRoutes = require('./routes/massEmails');
+const assignmentRuleRoutes = require('./routes/assignmentRules');
+const validationRuleRoutes = require('./routes/validationRules');
+const webhookConfigRoutes = require('./routes/webhookConfigs');
+const territoryRoutes = require('./routes/territories');
 
 const app = express();
 
@@ -120,6 +125,11 @@ app.use(`/api/${apiVersion}/visits`, visitRoutes);
 app.use(`/api/${apiVersion}/social-posts`, socialPostRoutes);
 app.use(`/api/${apiVersion}/projects`, projectRoutes);
 app.use(`/api/${apiVersion}/services`, serviceRoutes);
+app.use(`/api/${apiVersion}/mass-emails`, massEmailRoutes);
+app.use(`/api/${apiVersion}/assignment-rules`, assignmentRuleRoutes);
+app.use(`/api/${apiVersion}/validation-rules`, validationRuleRoutes);
+app.use(`/api/${apiVersion}/webhook-configs`, webhookConfigRoutes);
+app.use(`/api/${apiVersion}/territories`, territoryRoutes);
 
 // Error handling
 app.use(notFound);

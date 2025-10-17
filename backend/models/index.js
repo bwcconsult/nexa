@@ -30,6 +30,11 @@ const Visit = require('./Visit');
 const SocialPost = require('./SocialPost');
 const Project = require('./Project');
 const Service = require('./Service');
+const MassEmail = require('./MassEmail');
+const AssignmentRule = require('./AssignmentRule');
+const ValidationRule = require('./ValidationRule');
+const WebhookConfig = require('./WebhookConfig');
+const Territory = require('./Territory');
 
 // Define relationships
 
@@ -123,6 +128,25 @@ Project.belongsTo(User, { foreignKey: 'project_manager_id', as: 'manager' });
 // Service relationships
 Service.belongsTo(User, { foreignKey: 'provider_id', as: 'provider' });
 
+// MassEmail relationships
+MassEmail.belongsTo(User, { foreignKey: 'created_by', as: 'creator' });
+
+// AssignmentRule relationships
+AssignmentRule.belongsTo(User, { foreignKey: 'created_by', as: 'creator' });
+AssignmentRule.belongsTo(User, { foreignKey: 'assigned_to_user_id', as: 'assignedUser' });
+
+// ValidationRule relationships
+ValidationRule.belongsTo(User, { foreignKey: 'created_by', as: 'creator' });
+
+// WebhookConfig relationships
+WebhookConfig.belongsTo(User, { foreignKey: 'created_by', as: 'creator' });
+
+// Territory relationships
+Territory.belongsTo(User, { foreignKey: 'manager_id', as: 'manager' });
+Territory.belongsTo(User, { foreignKey: 'created_by', as: 'creator' });
+Territory.belongsTo(Territory, { foreignKey: 'parent_territory_id', as: 'parentTerritory' });
+Territory.hasMany(Territory, { foreignKey: 'parent_territory_id', as: 'childTerritories' });
+
 const models = {
   sequelize,
   User,
@@ -154,6 +178,11 @@ const models = {
   SocialPost,
   Project,
   Service,
+  MassEmail,
+  AssignmentRule,
+  ValidationRule,
+  WebhookConfig,
+  Territory,
 };
 
 module.exports = models;

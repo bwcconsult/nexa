@@ -58,6 +58,18 @@ import Projects from "./Projects";
 
 import Services from "./Services";
 
+import Workflows from "./Workflows";
+
+import MassEmail from "./MassEmail";
+
+import AssignmentRules from "./AssignmentRules";
+
+import ValidationRules from "./ValidationRules";
+
+import WebhookConfigs from "./WebhookConfigs";
+
+import Territories from "./Territories";
+
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 
 const PAGES = {
@@ -119,6 +131,18 @@ const PAGES = {
     Projects: Projects,
     
     Services: Services,
+    
+    Workflows: Workflows,
+    
+    MassEmail: MassEmail,
+    
+    AssignmentRules: AssignmentRules,
+    
+    ValidationRules: ValidationRules,
+    
+    WebhookConfigs: WebhookConfigs,
+    
+    Territories: Territories,
     
 }
 
@@ -204,6 +228,18 @@ function PagesContent() {
                 <Route path="/Projects" element={<Projects />} />
                 
                 <Route path="/Services" element={<Services />} />
+                
+                <Route path="/Workflows" element={<Workflows />} />
+                
+                <Route path="/MassEmail" element={<MassEmail />} />
+                
+                <Route path="/AssignmentRules" element={<AssignmentRules />} />
+                
+                <Route path="/ValidationRules" element={<ValidationRules />} />
+                
+                <Route path="/WebhookConfigs" element={<WebhookConfigs />} />
+                
+                <Route path="/Territories" element={<Territories />} />
                 
             </Routes>
         </Layout>
