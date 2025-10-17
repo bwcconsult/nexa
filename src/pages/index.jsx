@@ -70,6 +70,22 @@ import WebhookConfigs from "./WebhookConfigs";
 
 import Territories from "./Territories";
 
+import ApprovalProcesses from "./ApprovalProcesses";
+
+import SalesCadences from "./SalesCadences";
+
+import CPQConfigurations from "./CPQConfigurations";
+
+import Blueprints from "./Blueprints";
+
+import CustomFunctions from "./CustomFunctions";
+
+import ClientPortals from "./ClientPortals";
+
+import PageLayouts from "./PageLayouts";
+
+import KioskModes from "./KioskModes";
+
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 
 const PAGES = {
@@ -143,6 +159,22 @@ const PAGES = {
     WebhookConfigs: WebhookConfigs,
     
     Territories: Territories,
+    
+    ApprovalProcesses: ApprovalProcesses,
+    
+    SalesCadences: SalesCadences,
+    
+    CPQConfigurations: CPQConfigurations,
+    
+    Blueprints: Blueprints,
+    
+    CustomFunctions: CustomFunctions,
+    
+    ClientPortals: ClientPortals,
+    
+    PageLayouts: PageLayouts,
+    
+    KioskModes: KioskModes,
     
 }
 
@@ -240,6 +272,22 @@ function PagesContent() {
                 <Route path="/WebhookConfigs" element={<WebhookConfigs />} />
                 
                 <Route path="/Territories" element={<Territories />} />
+                
+                <Route path="/ApprovalProcesses" element={<ApprovalProcesses />} />
+                
+                <Route path="/SalesCadences" element={<SalesCadences />} />
+                
+                <Route path="/CPQConfigurations" element={<CPQConfigurations />} />
+                
+                <Route path="/Blueprints" element={<Blueprints />} />
+                
+                <Route path="/CustomFunctions" element={<CustomFunctions />} />
+                
+                <Route path="/ClientPortals" element={<ClientPortals />} />
+                
+                <Route path="/PageLayouts" element={<PageLayouts />} />
+                
+                <Route path="/KioskModes" element={<KioskModes />} />
                 
             </Routes>
         </Layout>

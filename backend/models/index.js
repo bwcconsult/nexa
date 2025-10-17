@@ -35,6 +35,16 @@ const AssignmentRule = require('./AssignmentRule');
 const ValidationRule = require('./ValidationRule');
 const WebhookConfig = require('./WebhookConfig');
 const Territory = require('./Territory');
+const ApprovalProcess = require('./ApprovalProcess');
+const ApprovalRequest = require('./ApprovalRequest');
+const SalesCadence = require('./SalesCadence');
+const CadenceEnrollment = require('./CadenceEnrollment');
+const CPQConfiguration = require('./CPQConfiguration');
+const Blueprint = require('./Blueprint');
+const CustomFunction = require('./CustomFunction');
+const ClientPortal = require('./ClientPortal');
+const PageLayout = require('./PageLayout');
+const KioskMode = require('./KioskMode');
 
 // Define relationships
 
@@ -147,6 +157,45 @@ Territory.belongsTo(User, { foreignKey: 'created_by', as: 'creator' });
 Territory.belongsTo(Territory, { foreignKey: 'parent_territory_id', as: 'parentTerritory' });
 Territory.hasMany(Territory, { foreignKey: 'parent_territory_id', as: 'childTerritories' });
 
+// ApprovalProcess relationships
+ApprovalProcess.belongsTo(User, { foreignKey: 'created_by', as: 'creator' });
+ApprovalProcess.hasMany(ApprovalRequest, { foreignKey: 'approval_process_id', as: 'requests' });
+
+// ApprovalRequest relationships
+ApprovalRequest.belongsTo(ApprovalProcess, { foreignKey: 'approval_process_id', as: 'process' });
+ApprovalRequest.belongsTo(User, { foreignKey: 'requested_by', as: 'requester' });
+ApprovalRequest.belongsTo(User, { foreignKey: 'final_decision_by', as: 'decider' });
+
+// SalesCadence relationships
+SalesCadence.belongsTo(User, { foreignKey: 'created_by', as: 'creator' });
+SalesCadence.hasMany(CadenceEnrollment, { foreignKey: 'cadence_id', as: 'enrollments' });
+
+// CadenceEnrollment relationships
+CadenceEnrollment.belongsTo(SalesCadence, { foreignKey: 'cadence_id', as: 'cadence' });
+CadenceEnrollment.belongsTo(User, { foreignKey: 'enrolled_by', as: 'enroller' });
+CadenceEnrollment.belongsTo(User, { foreignKey: 'assigned_to', as: 'assignee' });
+
+// CPQConfiguration relationships
+CPQConfiguration.belongsTo(Product, { foreignKey: 'product_id', as: 'product' });
+CPQConfiguration.belongsTo(User, { foreignKey: 'created_by', as: 'creator' });
+
+// Blueprint relationships
+Blueprint.belongsTo(User, { foreignKey: 'created_by', as: 'creator' });
+
+// CustomFunction relationships
+CustomFunction.belongsTo(User, { foreignKey: 'created_by', as: 'creator' });
+
+// ClientPortal relationships
+ClientPortal.belongsTo(Account, { foreignKey: 'client_account_id', as: 'account' });
+ClientPortal.belongsTo(User, { foreignKey: 'created_by', as: 'creator' });
+
+// PageLayout relationships
+PageLayout.belongsTo(User, { foreignKey: 'created_by', as: 'creator' });
+
+// KioskMode relationships
+KioskMode.belongsTo(User, { foreignKey: 'auto_assign_to', as: 'assignee' });
+KioskMode.belongsTo(User, { foreignKey: 'created_by', as: 'creator' });
+
 const models = {
   sequelize,
   User,
@@ -183,6 +232,16 @@ const models = {
   ValidationRule,
   WebhookConfig,
   Territory,
+  ApprovalProcess,
+  ApprovalRequest,
+  SalesCadence,
+  CadenceEnrollment,
+  CPQConfiguration,
+  Blueprint,
+  CustomFunction,
+  ClientPortal,
+  PageLayout,
+  KioskMode,
 };
 
 module.exports = models;

@@ -40,7 +40,15 @@ import {
   Mail as MailIcon,
   Shield,
   Webhook,
-  Map
+  Map,
+  CheckCircle,
+  Calendar as CalendarIcon,
+  Package,
+  Workflow as WorkflowIcon,
+  Code,
+  Globe,
+  Layout as LayoutIcon,
+  Tablet
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -89,6 +97,14 @@ const moreNavItems = [
     { title: "Validation Rules", url: createPageUrl("ValidationRules"), icon: Shield, badge: "NEW" },
     { title: "Webhooks", url: createPageUrl("WebhookConfigs"), icon: Webhook, badge: "NEW" },
     { title: "Territories", url: createPageUrl("Territories"), icon: Map, badge: "NEW" },
+    { title: "Approval Processes", url: createPageUrl("ApprovalProcesses"), icon: CheckCircle, badge: "NEW" },
+    { title: "Sales Cadences", url: createPageUrl("SalesCadences"), icon: CalendarIcon, badge: "NEW" },
+    { title: "CPQ Config", url: createPageUrl("CPQConfigurations"), icon: Package, badge: "NEW" },
+    { title: "Blueprints", url: createPageUrl("Blueprints"), icon: WorkflowIcon, badge: "NEW" },
+    { title: "Custom Functions", url: createPageUrl("CustomFunctions"), icon: Code, badge: "NEW" },
+    { title: "Client Portals", url: createPageUrl("ClientPortals"), icon: Globe, badge: "NEW" },
+    { title: "Page Layouts", url: createPageUrl("PageLayouts"), icon: LayoutIcon, badge: "NEW" },
+    { title: "Kiosk Mode", url: createPageUrl("KioskModes"), icon: Tablet, badge: "NEW" },
     { title: "AI Assistant", url: createPageUrl("AIAssistant"), icon: Bot, badge: "AI" },
     { title: "Integrations", url: createPageUrl("Integrations"), icon: Zap },
     { title: "Settings", url: createPageUrl("Settings"), icon: Settings },

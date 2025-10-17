@@ -49,6 +49,16 @@ const assignmentRuleRoutes = require('./routes/assignmentRules');
 const validationRuleRoutes = require('./routes/validationRules');
 const webhookConfigRoutes = require('./routes/webhookConfigs');
 const territoryRoutes = require('./routes/territories');
+const approvalProcessRoutes = require('./routes/approvalProcesses');
+const approvalRequestRoutes = require('./routes/approvalRequests');
+const salesCadenceRoutes = require('./routes/salesCadences');
+const cadenceEnrollmentRoutes = require('./routes/cadenceEnrollments');
+const cpqConfigurationRoutes = require('./routes/cpqConfigurations');
+const blueprintRoutes = require('./routes/blueprints');
+const customFunctionRoutes = require('./routes/customFunctions');
+const clientPortalRoutes = require('./routes/clientPortals');
+const pageLayoutRoutes = require('./routes/pageLayouts');
+const kioskModeRoutes = require('./routes/kioskModes');
 
 const app = express();
 
@@ -130,6 +140,16 @@ app.use(`/api/${apiVersion}/assignment-rules`, assignmentRuleRoutes);
 app.use(`/api/${apiVersion}/validation-rules`, validationRuleRoutes);
 app.use(`/api/${apiVersion}/webhook-configs`, webhookConfigRoutes);
 app.use(`/api/${apiVersion}/territories`, territoryRoutes);
+app.use(`/api/${apiVersion}/approval-processes`, approvalProcessRoutes);
+app.use(`/api/${apiVersion}/approval-requests`, approvalRequestRoutes);
+app.use(`/api/${apiVersion}/sales-cadences`, salesCadenceRoutes);
+app.use(`/api/${apiVersion}/cadence-enrollments`, cadenceEnrollmentRoutes);
+app.use(`/api/${apiVersion}/cpq-configurations`, cpqConfigurationRoutes);
+app.use(`/api/${apiVersion}/blueprints`, blueprintRoutes);
+app.use(`/api/${apiVersion}/custom-functions`, customFunctionRoutes);
+app.use(`/api/${apiVersion}/client-portals`, clientPortalRoutes);
+app.use(`/api/${apiVersion}/page-layouts`, pageLayoutRoutes);
+app.use(`/api/${apiVersion}/kiosk-modes`, kioskModeRoutes);
 
 // Error handling
 app.use(notFound);
