@@ -60,6 +60,7 @@ const clientPortalRoutes = require('./routes/clientPortals');
 const pageLayoutRoutes = require('./routes/pageLayouts');
 const kioskModeRoutes = require('./routes/kioskModes');
 const industryTemplateRoutes = require('./routes/industryTemplates');
+const featureRoutes = require('./routes/features');
 
 const app = express();
 
@@ -152,6 +153,7 @@ app.use(`/api/${apiVersion}/client-portals`, clientPortalRoutes);
 app.use(`/api/${apiVersion}/page-layouts`, pageLayoutRoutes);
 app.use(`/api/${apiVersion}/kiosk-modes`, kioskModeRoutes);
 app.use(`/api/${apiVersion}/industry-templates`, industryTemplateRoutes);
+app.use(`/api/${apiVersion}/features`, featureRoutes);
 
 // Error handling
 app.use(notFound);
