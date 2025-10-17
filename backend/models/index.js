@@ -46,6 +46,11 @@ const ClientPortal = require('./ClientPortal');
 const PageLayout = require('./PageLayout');
 const KioskMode = require('./KioskMode');
 const IndustryTemplate = require('./IndustryTemplate');
+const ContactList = require('./ContactList');
+const ImportJob = require('./ImportJob');
+const ExportJob = require('./ExportJob');
+const Conversation = require('./Conversation');
+const Message = require('./Message');
 
 // Define relationships
 
@@ -244,6 +249,11 @@ const models = {
   PageLayout,
   KioskMode,
   IndustryTemplate,
+  ContactList,
+  ImportJob,
+  ExportJob,
+  Conversation,
+  Message,
 };
 
 module.exports = models;

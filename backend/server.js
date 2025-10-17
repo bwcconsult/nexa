@@ -61,6 +61,9 @@ const pageLayoutRoutes = require('./routes/pageLayouts');
 const kioskModeRoutes = require('./routes/kioskModes');
 const industryTemplateRoutes = require('./routes/industryTemplates');
 const featureRoutes = require('./routes/features');
+const contactListRoutes = require('./routes/contactLists');
+const importExportRoutes = require('./routes/importExport');
+const conversationRoutes = require('./routes/conversations');
 
 const app = express();
 
@@ -154,6 +157,9 @@ app.use(`/api/${apiVersion}/page-layouts`, pageLayoutRoutes);
 app.use(`/api/${apiVersion}/kiosk-modes`, kioskModeRoutes);
 app.use(`/api/${apiVersion}/industry-templates`, industryTemplateRoutes);
 app.use(`/api/${apiVersion}/features`, featureRoutes);
+app.use(`/api/${apiVersion}/contact-lists`, contactListRoutes);
+app.use(`/api/${apiVersion}`, importExportRoutes);
+app.use(`/api/${apiVersion}/conversations`, conversationRoutes);
 
 // Error handling
 app.use(notFound);
