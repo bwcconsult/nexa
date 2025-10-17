@@ -42,6 +42,22 @@ import Calls from "./Calls";
 
 import Automation from "./Automation";
 
+import Quotes from "./Quotes";
+
+import PriceBooks from "./PriceBooks";
+
+import Solutions from "./Solutions";
+
+import Forecasts from "./Forecasts";
+
+import Visits from "./Visits";
+
+import Social from "./Social";
+
+import Projects from "./Projects";
+
+import Services from "./Services";
+
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 
 const PAGES = {
@@ -87,6 +103,22 @@ const PAGES = {
     Calls: Calls,
     
     Automation: Automation,
+    
+    Quotes: Quotes,
+    
+    PriceBooks: PriceBooks,
+    
+    Solutions: Solutions,
+    
+    Forecasts: Forecasts,
+    
+    Visits: Visits,
+    
+    Social: Social,
+    
+    Projects: Projects,
+    
+    Services: Services,
     
 }
 
@@ -154,6 +186,24 @@ function PagesContent() {
                 <Route path="/Meetings" element={<Meetings />} />
                 
                 <Route path="/Calls" element={<Calls />} />
+                
+                <Route path="/Automation" element={<Automation />} />
+                
+                <Route path="/Quotes" element={<Quotes />} />
+                
+                <Route path="/PriceBooks" element={<PriceBooks />} />
+                
+                <Route path="/Solutions" element={<Solutions />} />
+                
+                <Route path="/Forecasts" element={<Forecasts />} />
+                
+                <Route path="/Visits" element={<Visits />} />
+                
+                <Route path="/Social" element={<Social />} />
+                
+                <Route path="/Projects" element={<Projects />} />
+                
+                <Route path="/Services" element={<Services />} />
                 
             </Routes>
         </Layout>

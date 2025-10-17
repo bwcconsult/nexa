@@ -21,6 +21,15 @@ const LinkAnalytics = require('./LinkAnalytics');
 const Email = require('./Email');
 const Document = require('./Document');
 const Workflow = require('./Workflow');
+const Quote = require('./Quote');
+const PriceBook = require('./PriceBook');
+const PriceBookEntry = require('./PriceBookEntry');
+const Solution = require('./Solution');
+const Forecast = require('./Forecast');
+const Visit = require('./Visit');
+const SocialPost = require('./SocialPost');
+const Project = require('./Project');
+const Service = require('./Service');
 
 // Define relationships
 
@@ -74,6 +83,46 @@ Ticket.belongsTo(Customer, { foreignKey: 'customer_id', as: 'customer' });
 // Document relationships
 Document.belongsTo(User, { foreignKey: 'uploaded_by', as: 'uploader' });
 
+// Quote relationships
+Quote.belongsTo(Deal, { foreignKey: 'deal_id', as: 'deal' });
+Quote.belongsTo(Account, { foreignKey: 'account_id', as: 'account' });
+Quote.belongsTo(Contact, { foreignKey: 'contact_id', as: 'contact' });
+Quote.belongsTo(User, { foreignKey: 'assigned_to', as: 'owner' });
+
+// PriceBook relationships
+PriceBook.hasMany(PriceBookEntry, { foreignKey: 'price_book_id', as: 'entries' });
+
+// PriceBookEntry relationships
+PriceBookEntry.belongsTo(PriceBook, { foreignKey: 'price_book_id', as: 'priceBook' });
+PriceBookEntry.belongsTo(Product, { foreignKey: 'product_id', as: 'product' });
+
+// Solution relationships
+Solution.belongsTo(Product, { foreignKey: 'product_id', as: 'product' });
+Solution.belongsTo(User, { foreignKey: 'created_by', as: 'author' });
+
+// Forecast relationships
+Forecast.belongsTo(User, { foreignKey: 'user_id', as: 'user' });
+Forecast.belongsTo(User, { foreignKey: 'approved_by', as: 'approver' });
+
+// Visit relationships
+Visit.belongsTo(Account, { foreignKey: 'account_id', as: 'account' });
+Visit.belongsTo(Contact, { foreignKey: 'contact_id', as: 'contact' });
+Visit.belongsTo(Lead, { foreignKey: 'lead_id', as: 'lead' });
+Visit.belongsTo(User, { foreignKey: 'assigned_to', as: 'owner' });
+
+// SocialPost relationships
+SocialPost.belongsTo(Campaign, { foreignKey: 'campaign_id', as: 'campaign' });
+SocialPost.belongsTo(Account, { foreignKey: 'account_id', as: 'account' });
+SocialPost.belongsTo(User, { foreignKey: 'created_by', as: 'creator' });
+
+// Project relationships
+Project.belongsTo(Account, { foreignKey: 'account_id', as: 'account' });
+Project.belongsTo(Deal, { foreignKey: 'deal_id', as: 'deal' });
+Project.belongsTo(User, { foreignKey: 'project_manager_id', as: 'manager' });
+
+// Service relationships
+Service.belongsTo(User, { foreignKey: 'provider_id', as: 'provider' });
+
 const models = {
   sequelize,
   User,
@@ -96,6 +145,15 @@ const models = {
   Email,
   Document,
   Workflow,
+  Quote,
+  PriceBook,
+  PriceBookEntry,
+  Solution,
+  Forecast,
+  Visit,
+  SocialPost,
+  Project,
+  Service,
 };
 
 module.exports = models;

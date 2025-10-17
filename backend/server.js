@@ -36,6 +36,14 @@ const workflowRoutes = require('./routes/workflows');
 const webhookRoutes = require('./routes/webhooks');
 const analyticsRoutes = require('./routes/analytics');
 const ssoRoutes = require('./routes/sso');
+const quoteRoutes = require('./routes/quotes');
+const priceBookRoutes = require('./routes/priceBooks');
+const solutionRoutes = require('./routes/solutions');
+const forecastRoutes = require('./routes/forecasts');
+const visitRoutes = require('./routes/visits');
+const socialPostRoutes = require('./routes/socialPosts');
+const projectRoutes = require('./routes/projects');
+const serviceRoutes = require('./routes/services');
 
 const app = express();
 
@@ -104,6 +112,14 @@ app.use(`/api/${apiVersion}/workflows`, workflowRoutes);
 app.use(`/api/${apiVersion}/webhooks`, webhookRoutes);
 app.use(`/api/${apiVersion}/analytics`, analyticsRoutes);
 app.use(`/api/${apiVersion}/sso`, ssoRoutes);
+app.use(`/api/${apiVersion}/quotes`, quoteRoutes);
+app.use(`/api/${apiVersion}/price-books`, priceBookRoutes);
+app.use(`/api/${apiVersion}/solutions`, solutionRoutes);
+app.use(`/api/${apiVersion}/forecasts`, forecastRoutes);
+app.use(`/api/${apiVersion}/visits`, visitRoutes);
+app.use(`/api/${apiVersion}/social-posts`, socialPostRoutes);
+app.use(`/api/${apiVersion}/projects`, projectRoutes);
+app.use(`/api/${apiVersion}/services`, serviceRoutes);
 
 // Error handling
 app.use(notFound);
