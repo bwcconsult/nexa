@@ -1,6 +1,7 @@
 [build]
   builder = "nixpacks"
-  
+  watchPatterns = ["backend/**"]
+
 [deploy]
   startCommand = "cd backend && npm start"
   restartPolicyType = "on_failure"
@@ -10,3 +11,5 @@
 
 [nixpacks]
   nodeVersion = "18"
+  installCmd = "cd backend && npm install"
+  buildCmd = "cd backend && npm run build"
