@@ -64,6 +64,7 @@ const featureRoutes = require('./routes/features');
 const contactListRoutes = require('./routes/contactLists');
 const importExportRoutes = require('./routes/importExport');
 const conversationRoutes = require('./routes/conversations');
+const aiRoutes = require('./routes/ai');
 
 const app = express();
 
@@ -160,6 +161,7 @@ app.use(`/api/${apiVersion}/features`, featureRoutes);
 app.use(`/api/${apiVersion}/contact-lists`, contactListRoutes);
 app.use(`/api/${apiVersion}`, importExportRoutes);
 app.use(`/api/${apiVersion}/conversations`, conversationRoutes);
+app.use(`/api/${apiVersion}/ai`, aiRoutes);
 
 // Error handling
 app.use(notFound);

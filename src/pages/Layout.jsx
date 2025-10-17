@@ -51,7 +51,8 @@ import {
   Factory,
   List as ListIcon,
   Upload,
-  Inbox as InboxIcon
+  Inbox as InboxIcon,
+  Brain
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -83,6 +84,7 @@ const mainNavItems = [
 ];
 
 const moreNavItems = [
+    { title: "AI Insights", url: createPageUrl("AIInsights"), icon: Brain, badge: "AI" },
     { title: "Inbox", url: createPageUrl("Inbox"), icon: InboxIcon, badge: "NEW" },
     { title: "Contact Lists", url: createPageUrl("ContactLists"), icon: ListIcon, badge: "NEW" },
     { title: "Import/Export", url: createPageUrl("ImportExport"), icon: Upload, badge: "NEW" },

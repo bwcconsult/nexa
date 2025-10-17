@@ -94,6 +94,8 @@ import ImportExport from "./ImportExport";
 
 import Inbox from "./Inbox";
 
+import AIInsights from "./AIInsights";
+
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 
 const PAGES = {
@@ -191,6 +193,8 @@ const PAGES = {
     ImportExport: ImportExport,
     
     Inbox: Inbox,
+    
+    AIInsights: AIInsights,
     
 }
 
@@ -312,6 +316,8 @@ function PagesContent() {
                 <Route path="/ImportExport" element={<ImportExport />} />
                 
                 <Route path="/Inbox" element={<Inbox />} />
+                
+                <Route path="/AIInsights" element={<AIInsights />} />
                 
             </Routes>
         </Layout>

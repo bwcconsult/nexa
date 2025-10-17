@@ -51,6 +51,8 @@ const ImportJob = require('./ImportJob');
 const ExportJob = require('./ExportJob');
 const Conversation = require('./Conversation');
 const Message = require('./Message');
+const AIInsight = require('./AIInsight');
+const AIPrediction = require('./AIPrediction');
 
 // Define relationships
 
@@ -254,6 +256,8 @@ const models = {
   ExportJob,
   Conversation,
   Message,
+  AIInsight,
+  AIPrediction,
 };
 
 module.exports = models;
