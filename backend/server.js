@@ -1,0 +1,148 @@
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const helmet = require('helmet');
+const compression = require('compression');
+const morgan = require('morgan');
+const rateLimit = require('express-rate-limit');
+
+// Import configurations
+const { sequelize } = require('./config/database');
+const logger = require('./config/logger');
+const { errorHandler, notFound } = require('./middleware/errorHandler');
+
+// Import routes
+const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/users');
+const leadRoutes = require('./routes/leads');
+const contactRoutes = require('./routes/contacts');
+const accountRoutes = require('./routes/accounts');
+const dealRoutes = require('./routes/deals');
+const taskRoutes = require('./routes/tasks');
+const meetingRoutes = require('./routes/meetings');
+const callRoutes = require('./routes/calls');
+const activityRoutes = require('./routes/activities');
+const customerRoutes = require('./routes/customers');
+const productRoutes = require('./routes/products');
+const orderRoutes = require('./routes/orders');
+const campaignRoutes = require('./routes/campaigns');
+const supplierRoutes = require('./routes/suppliers');
+const invoiceRoutes = require('./routes/invoices');
+const ticketRoutes = require('./routes/tickets');
+const linkAnalyticsRoutes = require('./routes/linkAnalytics');
+const emailRoutes = require('./routes/emails');
+const documentRoutes = require('./routes/documents');
+const workflowRoutes = require('./routes/workflows');
+const webhookRoutes = require('./routes/webhooks');
+const analyticsRoutes = require('./routes/analytics');
+const ssoRoutes = require('./routes/sso');
+
+const app = express();
+
+// Security middleware
+app.use(helmet());
+app.use(cors({
+  origin: process.env.CORS_ORIGIN?.split(',') || '*',
+  credentials: true,
+}));
+
+// Rate limiting
+const limiter = rateLimit({
+  windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS) || 15 * 60 * 1000,
+  max: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS) || 100,
+  message: 'Too many requests from this IP, please try again later.',
+});
+app.use('/api/', limiter);
+
+// Body parsing middleware
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+
+// Compression
+app.use(compression());
+
+// Logging
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+} else {
+  app.use(morgan('combined', { stream: logger.stream }));
+}
+
+// Health check
+app.get('/health', (req, res) => {
+  res.json({ 
+    status: 'healthy', 
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV,
+    version: process.env.API_VERSION || 'v1'
+  });
+});
+
+// API Routes
+const apiVersion = process.env.API_VERSION || 'v1';
+app.use(`/api/${apiVersion}/auth`, authRoutes);
+app.use(`/api/${apiVersion}/users`, userRoutes);
+app.use(`/api/${apiVersion}/leads`, leadRoutes);
+app.use(`/api/${apiVersion}/contacts`, contactRoutes);
+app.use(`/api/${apiVersion}/accounts`, accountRoutes);
+app.use(`/api/${apiVersion}/deals`, dealRoutes);
+app.use(`/api/${apiVersion}/tasks`, taskRoutes);
+app.use(`/api/${apiVersion}/meetings`, meetingRoutes);
+app.use(`/api/${apiVersion}/calls`, callRoutes);
+app.use(`/api/${apiVersion}/activities`, activityRoutes);
+app.use(`/api/${apiVersion}/customers`, customerRoutes);
+app.use(`/api/${apiVersion}/products`, productRoutes);
+app.use(`/api/${apiVersion}/orders`, orderRoutes);
+app.use(`/api/${apiVersion}/campaigns`, campaignRoutes);
+app.use(`/api/${apiVersion}/suppliers`, supplierRoutes);
+app.use(`/api/${apiVersion}/invoices`, invoiceRoutes);
+app.use(`/api/${apiVersion}/tickets`, ticketRoutes);
+app.use(`/api/${apiVersion}/link-analytics`, linkAnalyticsRoutes);
+app.use(`/api/${apiVersion}/emails`, emailRoutes);
+app.use(`/api/${apiVersion}/documents`, documentRoutes);
+app.use(`/api/${apiVersion}/workflows`, workflowRoutes);
+app.use(`/api/${apiVersion}/webhooks`, webhookRoutes);
+app.use(`/api/${apiVersion}/analytics`, analyticsRoutes);
+app.use(`/api/${apiVersion}/sso`, ssoRoutes);
+
+// Error handling
+app.use(notFound);
+app.use(errorHandler);
+
+// Database connection and server start
+const PORT = process.env.PORT || 5000;
+
+const startServer = async () => {
+  try {
+    // Test database connection
+    await sequelize.authenticate();
+    logger.info('✅ Database connection established successfully.');
+
+    // Sync database models (only in development)
+    if (process.env.NODE_ENV === 'development') {
+      await sequelize.sync({ alter: true });
+      logger.info('✅ Database models synchronized.');
+    }
+
+    // Start server
+    app.listen(PORT, () => {
+      logger.info(`🚀 Nexa CRM Backend running on port ${PORT}`);
+      logger.info(`📍 Environment: ${process.env.NODE_ENV}`);
+      logger.info(`🌐 API Base: http://localhost:${PORT}/api/${apiVersion}`);
+    });
+  } catch (error) {
+    logger.error('❌ Unable to start server:', error);
+    process.exit(1);
+  }
+};
+
+// Handle unhandled promise rejections
+process.on('unhandledRejection', (err) => {
+  logger.error('UNHANDLED REJECTION! 💥 Shutting down...');
+  logger.error(err);
+  process.exit(1);
+});
+
+startServer();
+
+module.exports = app;
