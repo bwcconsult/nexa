@@ -29,7 +29,13 @@ import {
   Building,
   CheckSquare,
   Calendar,
-  Phone // Added Phone icon
+  Phone,
+  FileText,
+  BookOpen,
+  Lightbulb,
+  MapPin,
+  Share2,
+  Briefcase
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -64,7 +70,15 @@ const moreNavItems = [
     { title: "Link Analytics", url: createPageUrl("LinkAnalytics"), icon: ExternalLink, badge: "Creator" },
     { title: "Inventory", url: createPageUrl("Inventory"), icon: Warehouse },
     { title: "Finance", url: createPageUrl("Finance"), icon: Receipt },
-    { title: "AI Assistant", url: createPageUrl("AIAssistant"), icon: Bot, badge: "NEW" },
+    { title: "Quotes", url: createPageUrl("Quotes"), icon: FileText, badge: "NEW" },
+    { title: "Price Books", url: createPageUrl("PriceBooks"), icon: BookOpen, badge: "NEW" },
+    { title: "Solutions", url: createPageUrl("Solutions"), icon: Lightbulb, badge: "NEW" },
+    { title: "Forecasts", url: createPageUrl("Forecasts"), icon: TrendingUp, badge: "NEW" },
+    { title: "Visits", url: createPageUrl("Visits"), icon: MapPin, badge: "NEW" },
+    { title: "Social", url: createPageUrl("Social"), icon: Share2, badge: "NEW" },
+    { title: "Projects", url: createPageUrl("Projects"), icon: Briefcase, badge: "NEW" },
+    { title: "Services", url: createPageUrl("Services"), icon: Settings, badge: "NEW" },
+    { title: "AI Assistant", url: createPageUrl("AIAssistant"), icon: Bot, badge: "AI" },
     { title: "Integrations", url: createPageUrl("Integrations"), icon: Zap },
     { title: "Settings", url: createPageUrl("Settings"), icon: Settings },
 ]
