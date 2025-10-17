@@ -45,6 +45,7 @@ const CustomFunction = require('./CustomFunction');
 const ClientPortal = require('./ClientPortal');
 const PageLayout = require('./PageLayout');
 const KioskMode = require('./KioskMode');
+const IndustryTemplate = require('./IndustryTemplate');
 
 // Define relationships
 
@@ -242,6 +243,7 @@ const models = {
   ClientPortal,
   PageLayout,
   KioskMode,
+  IndustryTemplate,
 };
 
 module.exports = models;

@@ -86,6 +86,8 @@ import PageLayouts from "./PageLayouts";
 
 import KioskModes from "./KioskModes";
 
+import IndustryTemplates from "./IndustryTemplates";
+
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 
 const PAGES = {
@@ -175,6 +177,8 @@ const PAGES = {
     PageLayouts: PageLayouts,
     
     KioskModes: KioskModes,
+    
+    IndustryTemplates: IndustryTemplates,
     
 }
 
@@ -288,6 +292,8 @@ function PagesContent() {
                 <Route path="/PageLayouts" element={<PageLayouts />} />
                 
                 <Route path="/KioskModes" element={<KioskModes />} />
+                
+                <Route path="/IndustryTemplates" element={<IndustryTemplates />} />
                 
             </Routes>
         </Layout>

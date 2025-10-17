@@ -47,7 +47,8 @@ import {
   Code,
   Globe,
   Layout as LayoutIcon,
-  Tablet
+  Tablet,
+  Factory
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -104,6 +105,7 @@ const moreNavItems = [
     { title: "Client Portals", url: createPageUrl("ClientPortals"), icon: Globe, badge: "NEW" },
     { title: "Page Layouts", url: createPageUrl("PageLayouts"), icon: LayoutIcon, badge: "NEW" },
     { title: "Kiosk Mode", url: createPageUrl("KioskModes"), icon: Tablet, badge: "NEW" },
+    { title: "Industry Templates", url: createPageUrl("IndustryTemplates"), icon: Factory, badge: "NEW" },
     { title: "AI Assistant", url: createPageUrl("AIAssistant"), icon: Bot, badge: "AI" },
     { title: "Integrations", url: createPageUrl("Integrations"), icon: Zap },
     { title: "Settings", url: createPageUrl("Settings"), icon: Settings },
